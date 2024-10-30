@@ -1,21 +1,13 @@
-import React from 'react'
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 function Home() {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-};
-  return (
-    <div>
-    <h1>Welcome to the Home Page!</h1>
-    <button onClick={handleLogout}>Logout</button>
-</div>
-  )
+
+    return (
+        <div>
+            <h1>Dobrodošli na početnu stranicu!</h1>
+        </div>
+    );
 }
 
-export default Home
+export default Home;

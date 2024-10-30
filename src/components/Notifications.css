@@ -1,0 +1,31 @@
+.notifications-container {
+    position: fixed;
+    left: 280px; /* Širina sidebar-a */
+    top: 0;
+    width: 400px; /* Fiksna širina za notifications panel */
+    height: 100vh;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    z-index: 100;
+    transition: left 0.3s ease;
+}
+
+.notifications-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.empty-notifications {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: #6b7280;
+    text-align: center;
+}
+
+.empty-notifications .material-icons {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}

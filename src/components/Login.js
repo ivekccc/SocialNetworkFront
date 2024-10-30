@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { loginUser } from '../services/authService';
 import { Link,useNavigate } from 'react-router-dom';
+import './Login.css';
 
 
 function Login() {
@@ -33,26 +34,49 @@ function Login() {
 };
 
   return (
-    <div>
-    <form onSubmit={handleLogin}>
-        <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-        />
-        <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-        />
-        <button type="submit">Login</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
-    <Link to="/register">Register</Link>
+    <div className="login-container">
+        <div className="login-illustration">
+            <h1>Dobrodošli nazad!</h1>
+            <p>Povežite se sa prijateljima i svetom oko vas.</p>
+        </div>
+
+        <div className="login-form-container">
+            <form onSubmit={handleLogin} className="login-form">
+                <h2>Prijavite se</h2>
+
+                <div className="form-group">
+                    <input
+                        type="text"
+                        placeholder="Korisničko ime"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                        className="form-input"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <input
+                        type="password"
+                        placeholder="Lozinka"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="form-input"
+                    />
+                </div>
+
+                {error && <p className="error-message">{error}</p>}
+
+                <button type="submit" className="login-button">
+                    Prijavi se
+                </button>
+
+                <div className="register-link">
+                    Nemate nalog? <Link to="/register">Registrujte se</Link>
+                </div>
+            </form>
+        </div>
     </div>
   )
 }

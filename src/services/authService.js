@@ -17,17 +17,20 @@ export const loginUser = async (username,password) => {
     return token;
 };
 
-export const registerUser= async(userData)=>{
-    const response=await fetch(`${API_URL}/register`,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(userData)
-    })
-    if(!response.ok){
-        throw new Error("Registration failed")
+export const registerUser = async (formData) => {
+    try {
+        const response = await fetch(`${API_URL}/register`, {
+            method: 'POST',
+            body: formData, // FormData će automatski postaviti odgovarajući Content-Type
+        });
+
+        if (!response.ok) {
+            throw new Error('Registration failed');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Registration error:', error);
+        throw error;
     }
-    const data=await response.json()
-    return data
-}
+};
