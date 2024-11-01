@@ -18,7 +18,7 @@ function App() {
                         <Route element={<PrivateLayout />}>
                             <Route path="/" element={<Home />} />
                             <Route path="/profile" element={<Profile />} />
-                            {/* Додајте остале приватне руте овде */}
+                            {/* Dodajte ostale privatne rute ovde */}
                         </Route>
                     </Route>
                 </Routes>

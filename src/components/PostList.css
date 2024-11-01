@@ -1,47 +1,8 @@
 .posts-container {
-    position: fixed;
-    left: auto;
+    position: relative;
     display: flex;
     flex-direction: column; /* Postavljamo flex pravac na kolonu */
     padding: 1rem;
-}
-
-.post-card {
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1.5rem; /* Veći razmak između postova */
-    transition: transform 0.2s; /* Efekat pri hover-u */
-}
-
-.post-card:hover {
-    transform: scale(1.02); /* Uvećanje pri hover-u */
-}
-
-.post-image {
-    width: 100%;
-    border-radius: 1rem;
-}
-
-.post-description {
-    margin: 0.5rem 0;
-}
-
-.post-author, .post-date {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* Responsive dizajn */
-@media (max-width: 768px) {
-    .post-card {
-        width: calc(50% - 1rem); /* 2 kolone */
-    }
-}
-
-@media (max-width: 480px) {
-    .post-card {
-        width: 100%; /* 1 kolona */
-    }
+    margin-inline-start: 12%;
+    width: 450px;
 }
