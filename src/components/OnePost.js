@@ -6,7 +6,10 @@ function OnePost({ post }) {
     return (
         <div className="post-card">
             <div className="post-info">
-                <Link to={`/profile/${post.authorUsername}`} className="post-author">Autor: {post.authorUsername}</Link>
+                <Link to={`/users/${post.authorUsername}`} style={{ display: 'flex', alignItems: 'center', textDecoration:'none' }}>
+                    <img src={post.authorProfileImage} alt="Autor" className="post-author-image" />
+                    <p className="post-author">{post.authorUsername}</p>
+                </Link>
                 <span className="post-date">{new Date(post.createdAt).toLocaleDateString()}</span>
             </div>
             {post.contentImage && <img src={post.contentImage} alt="Post" className="post-image" />}

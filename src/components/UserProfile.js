@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { getUserByUsername } from '../services/userService';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './UserProfile.css';
 
 function UserProfile() {
@@ -10,8 +10,14 @@ function UserProfile() {
     const [userProfile, setUserProfile] = useState(null);
     const [error, setError] = useState(null);
     const [imageLoading, setImageLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if (username === authData.username) {
+            navigate('/profile', { replace: true });
+            return;
+        }
+
         const fetchProfile = async () => {
             try {
                 const data = await getUserByUsername(username, authData.token);
@@ -22,7 +28,7 @@ function UserProfile() {
         };
 
         fetchProfile();
-    }, [username, authData.token]);
+    }, [username, authData.token, authData.username, navigate]);
 
     if (error) {
         return <div className="error-container">{error}</div>;

@@ -7,27 +7,31 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [authData, setAuthData] = useState(() => {
         const token = localStorage.getItem('token');
+        const username=localStorage.getItem('username')
         return {
             token: token ? token : null,
-            user: null,
+            username: username? username:null,
         };
     });
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
         if (token) {
-            setAuthData({ token, user: null });
+            setAuthData({ token, username: username });
         }
     }, []);
 
-    const login = (token) => {
-        setAuthData({ token, user: null });
+    const login = (token,username) => {
+        setAuthData({ token, username: username });
         localStorage.setItem('token', token);
+        localStorage.setItem('username', username);
     };
 
     const logout = () => {
-        setAuthData({ token: null, user: null });
+        setAuthData({ token: null, username: null });
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
     };
 
     return (

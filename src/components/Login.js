@@ -25,7 +25,7 @@ function Login() {
 
     try {
         const token = await loginUser(username, password);
-        login(token);
+        login(token,username);
         console.log(token);
         navigate("/")
     } catch (error) {

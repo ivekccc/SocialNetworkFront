@@ -16,6 +16,7 @@
 
 .post-info {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
@@ -29,19 +30,28 @@
     color: #444;
 }
 
-/* Dodajemo stilove za ID autora i datum */
 .post-author, .post-date {
     font-size: 0.9rem;
-    color: #6b7280; /* Siva boja za tekst */
+    color: #6b7280;
 }
-
 
 .post-author {
     font-weight: bold;
-    text-decoration: none; /* Podebljan ID autora */
+    text-decoration: none;
 }
 
-/* Responsive dizajn */
+.post-author-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    border: 3px solid rgba(0, 0, 0, 0.766);
+}
+
+.post-info div {
+    margin-left: 0;
+}
+
 @media (max-width: 768px) {
     .post-card {
         width: 100%;
