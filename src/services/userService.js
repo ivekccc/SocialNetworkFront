@@ -52,3 +52,20 @@ export const followUser = async (userId, token) => {
         throw new Error('Failed to follow user');
     }
 };
+
+export const getUserByUsername = async (username, token) => {
+    const response = await fetch(`${API_URL}/users/${username}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Error response:", errorText);
+    }
+    const data = await response.json();
+    return data;
+};
