@@ -2,31 +2,7 @@
 
 .home-container {
     display: flex;
-    min-height: 100vh;
     font-family: 'Quicksand', sans-serif;
+    background-color: #fafafa;
 }
 
-.main-content {
-    flex: 1;
-    margin-left: 280px;
-    padding: 2rem;
-    background: #f3f4f6;
-    min-height: 100vh;
-}
-
-.content-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive dizajn */
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 80px;
-        padding: 1rem;
-    }
-}

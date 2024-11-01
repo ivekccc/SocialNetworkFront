@@ -8,9 +8,7 @@ function PrivateLayout() {
         <div className="layout-container">
             <Sidebar />
             <div className="main-content">
-                <div className="content-wrapper">
                     <Outlet />
-                </div>
             </div>
         </div>
     );
