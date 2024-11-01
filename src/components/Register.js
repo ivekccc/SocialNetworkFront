@@ -54,7 +54,21 @@ function Register() {
             console.log("Registration successful", newUser);
             navigate("/");
         } catch (error) {
-            setError("Registration failed please try again");
+            console.log("Error object:", error); // Prikaz kompletnog error objekta
+        console.log("Error response:", error.response); // Prikaz error.response objekta
+        console.log("Error response data:", error.response ? error.response.data : "No response");
+        console.log(error.message) // Provera error.response.data
+            if (error.response && error.response.data) {
+                const errorMessage = error.response.data;
+                if (errorMessage.includes("Registration failed")) {
+                    setError("Korisničko ime je već u upotrebi. Izaberite drugo.");
+                }
+                else {
+                    setError("Registracija nije uspela. Pokušajte ponovo.");
+                }
+            } else {
+                setError("Registracija nije uspela. Pokušajte ponovo.");
+            }
         }
     };
 

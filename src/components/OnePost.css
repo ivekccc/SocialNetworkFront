@@ -35,8 +35,10 @@
     color: #6b7280; /* Siva boja za tekst */
 }
 
+
 .post-author {
-    font-weight: bold; /* Podebljan ID autora */
+    font-weight: bold;
+    text-decoration: none; /* Podebljan ID autora */
 }
 
 /* Responsive dizajn */
