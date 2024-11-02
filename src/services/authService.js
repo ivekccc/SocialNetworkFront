@@ -1,34 +1,31 @@
+import axios from 'axios';
+
 const API_URL = 'http://localhost:8080';
 
-export const loginUser = async (username,password) => {
-    const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-    });
+export const loginUser = async (username, password) => {
+    try {
+        const response = await axios.post(`${API_URL}/login`, { username, password }, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-    if (!response.ok) {
+        return response.data;
+    } catch (error) {
+        console.error('Login error:', error);
         throw new Error('Login failed');
     }
-
-    const token = await response.text();
-    return token;
 };
 
 export const registerUser = async (formData) => {
     try {
-        const response = await fetch(`${API_URL}/register`, {
-            method: 'POST',
-            body: formData, // FormData će automatski postaviti odgovarajući Content-Type
+        const response = await axios.post(`${API_URL}/register`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
         });
 
-        if (!response.ok) {
-            throw new Error('Registration failed');
-        }
-
-        return await response.json();
+        return response.data;
     } catch (error) {
         console.error('Registration error:', error);
         throw error;

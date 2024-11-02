@@ -1,19 +1,19 @@
+import axios from 'axios';
+
 const API_URL = 'http://localhost:8080';
+
 export const getAllPosts = async (token) => {
-    const response = await fetch(`${API_URL}/allPosts`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
+    try {
+        const response = await axios.get(`${API_URL}/allPosts`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
 
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error response:", errorText);
-        throw new Error('Failed to follow user');
+        return response.data;
+    } catch (error) {
+        console.error("Error response:", error.response ? error.response.data : error.message);
+        throw new Error('Failed to retrieve posts');
     }
-    const data = await response.json();
-    return data;
 };
