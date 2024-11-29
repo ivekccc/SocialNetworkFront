@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NotificationsPanel.css';
 
 function NotificationsPanel({ isOpen, onClose }) {
+    const [notifications, setNotifications] = useState([]);
+
+
     return (
         <div className={`notifications-panel ${isOpen ? 'open' : ''}`}>
             <div className="notifications-header">
@@ -11,32 +14,16 @@ function NotificationsPanel({ isOpen, onClose }) {
                 </button>
             </div>
             <div className="notifications-content">
-                {/* Пример обавештења */}
-                <div className="notification-item">
-                    <div className="notification-avatar">
-                        <span className="material-icons">person</span>
+                {notifications.map((notification, index) => (
+                    <div className="notification-item" key={index}>
+                        <div className="notification-details">
+                            <p className="notification-text">
+                                <strong>{notification.senderUsername}</strong> je započeo da vas prati
+                            </p>
+                            <span className="notification-time">{notification.sendTime}</span>
+                        </div>
                     </div>
-                    <div className="notification-details">
-                        <p className="notification-text">
-                            <strong>Marko Marković</strong> je započeo da vas prati
-                        </p>
-                        <span className="notification-time">pre 2 sata</span>
-                    </div>
-                </div>
-
-                <div className="notification-item">
-                    <div className="notification-avatar">
-                        <span className="material-icons">favorite</span>
-                    </div>
-                    <div className="notification-details">
-                        <p className="notification-text">
-                            <strong>Ana Anić</strong> se sviđa vaša objava
-                        </p>
-                        <span className="notification-time">pre 5 sati</span>
-                    </div>
-                </div>
-
-                {/* Можете додати више обавештења овде */}
+                ))}
             </div>
         </div>
     );

@@ -34,21 +34,21 @@ export const searchUsers = async (query, token) => {
     }
 };
 
-export const followUser = async (userId, token) => {
+
+
+export const followUser = async (sender, receiver, token) => {
     try {
-        const response = await axios.post(`${API_URL}/users/${userId}/follow`, null, {
+        await axios.post('http://localhost:8080/notifications/follow', null, {
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
+            params: { sender, receiver }
         });
-
-        return response.data;
     } catch (error) {
-        console.error("Failed to follow user:", error.response ? error.response.data : error.message);
-        throw new Error('Failed to follow user');
+        console.error('Error sending follow notification:', error);
     }
 };
+
 
 export const getUserByUsername = async (username, token) => {
     try {

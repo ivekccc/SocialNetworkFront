@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import UserProfile from './components/UserProfile';
 import PrivateRoute from './components/PrivateRoute';
 import PrivateLayout from './components/PrivateLayout';
+import Messages from './components/Messages';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/users/:username" element={<UserProfile />}/>
+                            <Route path="/messages" element={<Messages />}/>
                             {/* Dodajte ostale privatne rute ovde */}
                         </Route>
                     </Route>

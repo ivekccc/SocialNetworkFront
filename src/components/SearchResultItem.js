@@ -6,14 +6,14 @@ function SearchResultItem({ user }) {
 
     const {authData}=useAuth()
 
-    const handleFollow = async (userId) => {
+    const handleFollow = async (receiver) => {
         try {
             if (!authData.token) {
                 console.error('Token nije dostupan');
                 return;
             }
-            await followUser(userId, authData.token); // Pozivamo funkciju za zapračivanje
-            console.log(`Zapratiо korisnika sa ID: ${userId}`);
+            await followUser(authData.username,receiver, authData.token); // Pozivamo funkciju za zapračivanje
+            console.log(`Zapratiо korisnika sa username: ${receiver}`);
         } catch (error) {
             console.error('Greška prilikom zapračivanja:', error);
         }
@@ -29,7 +29,7 @@ function SearchResultItem({ user }) {
             <div className="search-result-info">
                 <div className="search-result-name">{user.name} {user.lastname}</div>
                 <div className="search-result-username">@{user.username}</div>
-                <button onClick={() => handleFollow(user.id)} className="follow-button">
+                <button onClick={() => handleFollow(user.username)} className="follow-button">
                     Zaprati
                 </button>
             </div>
