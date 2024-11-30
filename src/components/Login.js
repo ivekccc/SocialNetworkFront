@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { loginUser } from '../services/authService';
 import { Link,useNavigate } from 'react-router-dom';
+import WebSocketService from '../services/WebSocketService';
 import './Login.css';
 
 
@@ -26,7 +27,7 @@ function Login() {
     try {
         const token = await loginUser(username, password);
         login(token,username);
-        console.log(token);
+        WebSocketService.notifyUserLogin(username);
         navigate("/")
     } catch (error) {
         setError('Invalid username or password');

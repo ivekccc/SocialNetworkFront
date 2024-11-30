@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchPanel from './SearchPanel';
 import NotificationsPanel from './NotificationsPanel';
 import './Sidebar.css';
+import WebSocketService from '../services/WebSocketService';
 
 function Sidebar() {
     const { logout } = useAuth();
@@ -19,6 +20,8 @@ function Sidebar() {
     }, [location.pathname]);
 
     const handleLogout = () => {
+        const username = localStorage.getItem("username");
+        WebSocketService.disconnectUser(username);
         logout();
         navigate("/login");
     };

@@ -8,26 +8,29 @@ import UserProfile from './components/UserProfile';
 import PrivateRoute from './components/PrivateRoute';
 import PrivateLayout from './components/PrivateLayout';
 import Messages from './components/Messages';
+import { OnlineUsersProvider } from './context/OnlineUsersContext';
 
 function App() {
     return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route element={<PrivateRoute />}>
-                        <Route element={<PrivateLayout />}>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/profile" element={<Profile />} />
-                            <Route path="/users/:username" element={<UserProfile />}/>
-                            <Route path="/messages" element={<Messages />}/>
-                            {/* Dodajte ostale privatne rute ovde */}
+        <OnlineUsersProvider>
+            <Router>
+                <div className="App">
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route element={<PrivateRoute />}>
+                            <Route element={<PrivateLayout />}>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/users/:username" element={<UserProfile />} />
+                                <Route path="/messages" element={<Messages />} />
+                                {/* Dodajte ostale privatne rute ovde */}
+                            </Route>
                         </Route>
-                    </Route>
-                </Routes>
-            </div>
-        </Router>
+                    </Routes>
+                </div>
+            </Router>
+        </OnlineUsersProvider>
     );
 }
 
